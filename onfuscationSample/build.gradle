@@ -4,6 +4,8 @@ plugins {
     id 'maven-publish'
 }
 
+def libraryVersion = '0.0.2'
+
 android {
     namespace 'com.example.onfuscationsample'
     compileSdk 32
@@ -18,7 +20,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -47,7 +49,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.5exceptions-rakeshdiwan'
                 artifactId = 'ObfuscationSample'
-                version = '0.0.1'
+                version = libraryVersion
             }
         }
     }
