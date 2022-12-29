@@ -16,7 +16,8 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 # Below is an example of mentioning a class that you don't want to be obfuscated
--keep class com.example.onfuscationsample.Sample { *; }
+-keep public class com.example.onfuscationsample.Sample { public *; }
+-keep public class com.example.onfuscationsample.SampleEnum { public *; }
 # The below are suggestions to be kept by ProGuard.
 -keepattributes Signature
 -keepattributes Exceptions
