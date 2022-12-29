@@ -1,11 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'maven-publish'
 }
-
-def libraryVersion = '0.0.4'
-
+apply from: file('publish.gradle')
 android {
     namespace 'com.example.onfuscationsample'
     compileSdk 32
@@ -20,8 +17,21 @@ android {
 
     buildTypes {
         release {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            // Shrink resources doesn't work for modules/libraries
+            shrinkResources false
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -30,13 +40,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-    publishing {
-        singleVariant('release') {
-            withSourcesJar()
-            withJavadocJar()
-        }
-        // ...
     }
 }
 
@@ -48,16 +51,4 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
-}
-afterEvaluate {
-    publishing{
-        publications{
-            release(MavenPublication){
-                from components.release
-                groupId = 'com.github.5exceptions-rakeshdiwan'
-                artifactId = 'ObfuscationSample'
-                version = libraryVersion
-            }
-        }
-    }
 }
