@@ -1,7 +1,7 @@
 apply plugin: 'maven-publish'
 def LIB_GROUP_ID = 'com.github.5exceptions-rakeshdiwan'
 def LIB_ARTIFACT_ID = 'ObfuscationSample'
-def LIB_VERSION = '0.0.7'
+def LIB_VERSION = '0.0.8'
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -14,7 +14,6 @@ afterEvaluate {
                 groupId LIB_GROUP_ID
                 artifactId LIB_ARTIFACT_ID
                 version LIB_VERSION
-                artifact("$buildDir/outputs/aar/onfuscationSample-release.aar")
                 artifact(sourceJar)
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')

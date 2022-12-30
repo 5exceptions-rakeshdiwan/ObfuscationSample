@@ -18,6 +18,7 @@
 # Below is an example of mentioning a class that you don't want to be obfuscated
 -keep public class com.example.onfuscationsample.Sample { public *; }
 -keep public class com.example.onfuscationsample.SampleEnum { public *; }
+-keep public class com.example.onfuscationsample.ApiHandler { public *; }
 # The below are suggestions to be kept by ProGuard.
 -keepattributes Signature
 -keepattributes Exceptions
