@@ -21,6 +21,19 @@ afterEvaluate {
                 groupId LIB_GROUP_ID
                 artifactId LIB_ARTIFACT_ID
                 version LIB_VERSION
+
+                afterEvaluate {
+                    from components.release
+                }
+            }
+        }
+    }
+    /*publishing {
+        publications {
+            release(MavenPublication) {
+                groupId LIB_GROUP_ID
+                artifactId LIB_ARTIFACT_ID
+                version LIB_VERSION
                 artifact(sourceJar)
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
@@ -34,5 +47,5 @@ afterEvaluate {
                 }
             }
         }
-    }
+    }*/
 }

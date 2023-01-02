@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
-apply from: file('publish.gradle')
 android {
     namespace 'com.example.onfuscationsample'
     compileSdk 32
@@ -10,7 +10,7 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 32
-        versionName "0.0.11"
+        versionName "0.0.12"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -41,7 +41,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
+
 
 dependencies {
 
@@ -52,4 +59,18 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.5exceptions-rakeshdiwan'
+            artifactId = 'ObfuscationSample'
+            version = '0.0.12'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }
