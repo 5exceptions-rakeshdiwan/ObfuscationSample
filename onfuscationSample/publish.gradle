@@ -1,7 +1,14 @@
 apply plugin: 'maven-publish'
 def LIB_GROUP_ID = 'com.github.5exceptions-rakeshdiwan'
 def LIB_ARTIFACT_ID = 'ObfuscationSample'
-def LIB_VERSION = '0.0.8'
+def LIB_VERSION = '0.0.9'
+
+android {
+    defaultConfig {
+        versionName "\"${LIB_VERSION}\""
+        buildConfigField 'String', 'VERSION_NAME', "\"${LIB_VERSION}\""
+    }
+}
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
