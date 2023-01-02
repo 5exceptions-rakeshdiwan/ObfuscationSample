@@ -10,7 +10,7 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 32
-        versionName "0.0.12"
+        versionName "0.0.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -66,7 +66,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.5exceptions-rakeshdiwan'
             artifactId = 'ObfuscationSample'
-            version = '0.0.12'
+            version = '0.0.13'
 
             afterEvaluate {
                 from components.release
