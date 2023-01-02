@@ -36,6 +36,10 @@
     public protected *;
 }
 
+-keep public class com.example.onfuscationsample.ApiHandler.* {
+    public *;
+}
+
 # Preserve all .class method names.
 
 -keepclassmembernames class * {

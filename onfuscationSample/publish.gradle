@@ -1,7 +1,7 @@
 apply plugin: 'maven-publish'
 def LIB_GROUP_ID = 'com.github.5exceptions-rakeshdiwan'
 def LIB_ARTIFACT_ID = 'ObfuscationSample'
-def LIB_VERSION = '0.0.9'
+def LIB_VERSION = '0.0.10'
 
 android {
     defaultConfig {
